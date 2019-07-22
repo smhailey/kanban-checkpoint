@@ -14,11 +14,18 @@ let _schema = new Schema({
 //CASCADE ON DELETE
 _schema.pre('findOneAndRemove', function (next) {
   //lets find all the lists and remove them
+  this._id //this is the board
   Promise.all([
-    _listRepo.deleteMany({ boardId: this._conditions._id })
+    _listRepo.deleteMany({ boardId: this._id })  //FIXME
   ])
     .then(() => next())
     .catch(err => next(err))
 })
+
+// export default class BoardService{
+//   get repository() {
+//     return mongoose.model('Board', _schema)
+//   }
+// }
 
 export default mongoose.model('Board', _schema)

@@ -8,6 +8,11 @@ Vue.use(Vuex)
 
 //Allows axios to work locally or live
 let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/'
+let auth = Axios.create({
+  baseURL: base + "auth/",
+  timeout: 3000,
+  withCredentials: true
+})
 
 let api = Axios.create({
   baseURL: base + "api/",
@@ -19,7 +24,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
-    activeBoard: {}
+    activeBoard: {},
+    lists: [],
+    tasks: {}
   },
   mutations: {
     setUser(state, user) {
@@ -27,6 +34,13 @@ export default new Vuex.Store({
     },
     setBoards(state, boards) {
       state.boards = boards
+    },
+    setLists(state, lists) {
+      state.lists = lists
+    },
+    setTasks(state, data) {
+      Vue.set(state.tasks, data.listId, data.tasks)
+      console.log(state.tasks)
     }
   },
   actions: {
@@ -74,7 +88,14 @@ export default new Vuex.Store({
         .then(serverBoard => {
           dispatch('getBoards')
         })
-    }
+    },
+    deleteBoard({ commit, dispatch }, boardId) {
+      api.delete('boards/' + boardId)
+        .then(res => {
+          dispatch('getBoards')
+          // router.push({ name: 'Boards' })
+        })
+    },
     //#endregion
 
 

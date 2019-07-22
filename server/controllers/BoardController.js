@@ -1,6 +1,13 @@
-import _boardService from '../services/BoardService'
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
+import ListService from '../services/ListService.js'
+import _boardService from '../services/BoardService'
+
+// import service and create an instance
+let _boardService = new BoardService()
+let _listRepo = new ListService()
+let _repo = _boardService.repository
+
 
 //PUBLIC
 export default class BoardsController {
@@ -9,6 +16,7 @@ export default class BoardsController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/lists', this.getListByBoardId)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -17,6 +25,18 @@ export default class BoardsController {
 
   defaultRoute(req, res, next) {
     next({ status: 404, message: 'No Such Route' })
+  }
+
+  async getListByBoardId(req, res, next) {
+    try {
+      let data = await _listRepo.find({
+        boardId: req.params.id
+      })
+      return res.send(data)
+    } catch (error) {
+      console.error(error)
+      next(error)
+    }
   }
 
   async getAll(req, res, next) {
