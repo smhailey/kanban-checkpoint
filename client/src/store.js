@@ -29,6 +29,9 @@ export default new Vuex.Store({
     tasks: {}
   },
   mutations: {
+    resetState(state, data) {
+      state.user = {}
+    },
     setUser(state, user) {
       state.user = user
     },

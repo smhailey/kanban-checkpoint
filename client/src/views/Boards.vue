@@ -1,5 +1,7 @@
 <template>
   <div class="boards">
+    <button class="btn btn-outline-danger" @click="logout">Logout</button>
+
     WELCOME TO THE BOARDS!!!
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
@@ -40,6 +42,9 @@
       deleteBoard(boardId) {
         this.$store.dispatch('deleteBoard', boardId);
       },
+      logout() {
+        this.$store.dispatch("logout")
+      }
     }
   };
 </script>
