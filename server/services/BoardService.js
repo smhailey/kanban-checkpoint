@@ -3,7 +3,7 @@ import ListService from './ListService'
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
-let _listRepo = new ListService().repository
+// let _listRepo = new ListService().repository
 
 let _schema = new Schema({
   title: { type: String, required: true },
@@ -20,6 +20,7 @@ _schema.pre('findOneAndRemove', function (next) {
   // ])
   // .then(() => next())
   // .catch(err => next(err))
+  next()
 })
 
 // export default class BoardService{

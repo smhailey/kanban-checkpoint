@@ -1,12 +1,12 @@
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
-import ListService from '../services/ListService.js'
+import _listRepo from '../services/ListService.js'
 import _boardService from '../services/BoardService'
 
 // import service and create an instance
 // let _boardService = new BoardService()
-let _listRepo = new ListService()
-let _repo = _boardService.repository
+// let _listRepo = new ListService()
+// let _repo = _boardService.repository
 
 
 //PUBLIC
@@ -75,6 +75,7 @@ export default class BoardsController {
 
   async delete(req, res, next) {
     try {
+      console.log('Entered delete board')
       await _boardService.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
       //REVIEW where are params & session inputs coming from in findOneAndRemove above?
       return res.send("Successfully deleted")
