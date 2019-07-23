@@ -76,6 +76,7 @@ export default class BoardsController {
   async delete(req, res, next) {
     try {
       await _boardService.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
+      //REVIEW where are params & session inputs coming from in findOneAndRemove above?
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }
