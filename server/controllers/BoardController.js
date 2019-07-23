@@ -4,7 +4,7 @@ import ListService from '../services/ListService.js'
 import _boardService from '../services/BoardService'
 
 // import service and create an instance
-let _boardService = new BoardService()
+// let _boardService = new BoardService()
 let _listRepo = new ListService()
 let _repo = _boardService.repository
 

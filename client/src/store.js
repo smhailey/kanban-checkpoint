@@ -93,7 +93,7 @@ export default new Vuex.Store({
       api.delete('boards/' + boardId)
         .then(res => {
           dispatch('getBoards')
-          // router.push({ name: 'Boards' })
+          router.push({ name: 'boards' })
         })
     },
     //#endregion
