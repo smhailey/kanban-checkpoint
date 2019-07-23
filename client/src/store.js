@@ -99,6 +99,18 @@ export default new Vuex.Store({
           router.push({ name: 'boards' })
         })
     },
+    addList({ commit, dispatch }, listData) {
+      api.post('lists', listData)
+        .then(serverList => {
+          dispatch('getLists')
+        })
+    },
+    getLists({ commit, dispatch }) {
+      api.get('lists')
+        .then(res => {
+          commit('setLists', res.data)
+        })
+    },
     //#endregion
 
 

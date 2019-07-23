@@ -1,6 +1,6 @@
 <template>
   <div class="boards">
-    <button class="btn btn-outline-danger" @click="logout">Logout</button>
+    <button class="btn btn-sm btn-outline-danger" @click="logout">Logout</button>
 
     WELCOME TO THE BOARDS!!!
     <form @submit.prevent="addBoard">

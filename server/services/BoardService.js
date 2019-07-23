@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import ListService from './ListService'
-const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId
+let Schema = mongoose.Schema
+let ObjectId = Schema.Types.ObjectId
 
 // let _listRepo = new ListService().repository
 
