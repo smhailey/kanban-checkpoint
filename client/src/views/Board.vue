@@ -1,6 +1,7 @@
 <template>
   <div class="board">
-    <button class="btn btn-sm btn-outline-danger m-2" @click="logout">Logout</button><br>
+    <button class="btn btn-sm btn-outline-danger m-2" @click="logout">Logout</button>
+    <br>
     {{board.title}}
     <form @submit.prevent="addList">
       <input type="text" placeholder="title" v-model="newList.title" required>
@@ -9,14 +10,12 @@
     </form>
     <div v-for="list in lists" :key="list._id">
 
-
-      <h3>Title: {{list.title}}</h3>
-      <p>Description: {{list.description}}</p>
-
-
-      <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
-    </div>
+    <h3>Title: {{list.title}}</h3>
+    <p>Description: {{list.description}}</p>
+    
+    <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
   </div>
+</div>
 </template>
 
 <script>

@@ -1,19 +1,26 @@
 <template>
   <div class="boards">
     <button class="btn btn-sm btn-outline-danger" @click="logout">Logout</button>
+    <p></p>
 
-    WELCOME TO THE BOARDS!!!
+    <b>WELCOME TO THE BOARDS!!!</b>
+    <p></p>
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
       <button type="submit">Create Board</button>
     </form>
-    <div v-for="board in boards" :key="board._id">
-      <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-      <button class="btn btn-danger btn-sm mb-2" @click="deleteBoard(board._id)">Delete </button>
-    </div>
+    <p></p>
+
+<div class="row justify-content-center">
+  <div class="card col-4 p-2 m-3" v-for="board in boards" :key="board._id">
+    <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
+    <button class="btn btn-danger btn-sm mb-2" @click="deleteBoard(board._id)">Delete </button>
   </div>
-</template>
+</div>
+        
+      </div> <!--Ending div of board cards-->
+    </template>
 
 <script>
   export default {
