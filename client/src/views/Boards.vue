@@ -1,7 +1,8 @@
 <template>
   <div class="boards">
-    <button class="btn btn-sm btn-outline-danger" @click="logout">Logout</button>
-
+    <div>
+      <button class="btn btn-sm btn-outline-danger mb-3" @click="logout">Logout</button>
+    </div>
     WELCOME TO THE BOARDS!!!
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>

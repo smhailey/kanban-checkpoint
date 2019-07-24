@@ -103,22 +103,22 @@ export default new Vuex.Store({
 
 
     //#region -- LISTS --
-    getLists({ commit, dispatch }) {
-      api.get('lists')
+    getListsByBoard({ commit, dispatch }, boardId) {
+      api.get('boards/' + boardId + '/lists')
         .then(res => {
           commit('setLists', res.data)
         })
     },
-    addList({ commit, dispatch }, listData) {
-      api.post('lists', listData)
-        .then(serverList => {
-          dispatch('getLists')
+    addList({ commit, dispatch }, payload) {
+      api.post('lists', payload)
+        .then(res => {
+          dispatch('getListsByBoard', payload.boardId)
         })
     },
-    deleteList({ commit, dispatch }, listId) {
-      api.delete('boards/' + boardId + listId)
+    deleteList({ commit, dispatch }, payload) {
+      api.delete('lists/' + payload._id)
         .then(res => {
-          dispatch('getLists')
+          dispatch('getListsByBoard', payload.boardId)
           router.push({ name: 'board' })
         })
     },
