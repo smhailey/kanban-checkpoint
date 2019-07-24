@@ -1,4 +1,5 @@
 <template>
+  
   <div class="boards">
     <div>
       <button class="btn btn-sm btn-outline-danger mb-3" @click="logout">Logout</button>

@@ -3,8 +3,9 @@
     <div id="nav">
       <router-link to="/">Boards</router-link> |
       <!-- FIXME Learn how to move router-link to board.vue page -->
+      <!--TODO Add "Logout" link on other side of pipe instead of red outline button-->
     </div>
-    <router-view />
+    <router-view /> <!--REVIEW What does this do?-->
   </div>
 </template>
 
@@ -22,6 +23,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    background-color: rgb(251, 252, 198); /* how to get 100% vh? */
+    
   }
 
   #nav {
@@ -30,10 +33,11 @@
 
   #nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #42b983;
   }
 
   #nav a.router-link-exact-active {
     color: #42b983;
   }
+
 </style>
