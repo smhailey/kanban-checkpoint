@@ -23,7 +23,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    background-color: rgb(251, 252, 198); /* how to get 100% vh? */
+    background-color: rgb(171, 236, 233); /* how to get 100% vh? */
     
   }
 
