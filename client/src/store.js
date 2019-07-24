@@ -99,24 +99,29 @@ export default new Vuex.Store({
           router.push({ name: 'boards' })
         })
     },
-    addList({ commit, dispatch }, listData) {
-      api.post('lists', listData)
-        .then(serverList => {
-          dispatch('getLists')
-        })
-    },
+    //#endregion
+
+
+    //#region -- LISTS --
     getLists({ commit, dispatch }) {
       api.get('lists')
         .then(res => {
           commit('setLists', res.data)
         })
     },
-    //#endregion
-
-
-    //#region -- LISTS --
-
-
+    addList({ commit, dispatch }, listData) {
+      api.post('lists', listData)
+        .then(serverList => {
+          dispatch('getLists')
+        })
+    },
+    deleteList({ commit, dispatch }, listId) {
+      api.delete('boards/' + boardId + listId)
+        .then(res => {
+          dispatch('getLists')
+          router.push({ name: 'board' })
+        })
+    },
 
     //#endregion
   }
