@@ -1,4 +1,7 @@
 <template>
+  <!-- <div id="nav">
+    <router-link to="/">Boards</router-link> |
+  </div> -->
   <div class="board">
     <button class="btn btn-sm btn-outline-danger m-2" @click="logout">Logout</button>
     <br>
@@ -34,7 +37,7 @@
     },
     mounted() {
       this.$store.dispatch("getBoards")
-      this.$store.dispatch("getLists", this.boardId)  //FIXME how do I getLists with a boardId?
+      this.$store.dispatch("getListsByBoard", this.boardId)
     },
     computed: {
       board() {
@@ -53,12 +56,11 @@
     methods: {
       addList() {
         this.newList.boardId = this.board._id
+        this.newList.authorId = this.$store.state.user._id
         this.$store.dispatch("addList", this.newList);
         this.newList = { title: "", description: "" };
       },
-      deleteList(listId) {
-        this.$store.dispatch('deleteList', ListId);
-      },
+
       logout() {
         this.$store.dispatch("logout")
       }

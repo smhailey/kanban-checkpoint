@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Boards</router-link> |
+      <!-- FIXME Learn how to move router-link to board.vue page -->
     </div>
     <router-view />
   </div>
