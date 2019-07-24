@@ -8,7 +8,6 @@
       <button type="submit">Create List</button>
     </form>
     <div v-for="list in lists" :key="list._id">
-      <router-link :to="{name: 'list', params: {listId: list._id}}">{{list.title}}</router-link>
       <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
     </div>
   </div>
@@ -30,7 +29,7 @@
     },
     mounted() {
       this.$store.dispatch("getBoards")
-      this.$store.dispatch("getLists", this.boardId)
+      this.$store.dispatch("getLists", this.boardId)  //FIXME how do I getLists with a boardId?
     },
     computed: {
       board() {
@@ -47,14 +46,8 @@
       }
     },
     methods: {
-      handleSubmit() {
-        let data = {
-          title: this.title,
-          boardId: this.boardId
-        }
-        this.$store.dispatch('addList', data)
-      },
       addList() {
+        this.newList.boardId = this.board._id
         this.$store.dispatch("addList", this.newList);
         this.newList = { title: "", description: "" };
       },

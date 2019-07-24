@@ -10,9 +10,7 @@
 <script>
   export default {
     name: "App",
-    mounted() {
-      this.$store.dispatch('authenticate') //authenticate on startup
-    }
+    mounted() { }
   };
 </script>
 

@@ -42,7 +42,7 @@ export default new Vuex.Store({
       state.lists = lists
     },
     setTasks(state, data) {
-      Vue.set(state.tasks, data.listId, data.tasks)
+
       console.log(state.tasks)
     }
   },
