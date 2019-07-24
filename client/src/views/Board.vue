@@ -8,6 +8,12 @@
       <button type="submit">Create List</button>
     </form>
     <div v-for="list in lists" :key="list._id">
+
+
+      <h3>Title: {{list.title}}</h3>
+      <p>Description: {{list.description}}</p>
+
+
       <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
     </div>
   </div>
