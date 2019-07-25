@@ -33,10 +33,10 @@
     },
     methods: {
       addTask() {
-        this.newTask.listId=this.list._id //brought in from boardvue and adjusted
-        this.newTask.authorId=this.$store.state.user._id //brought in from boardvue
-        this.newTask={title: "", description: ""}
-        this.$store.dispatch('addTask', this.newTask)
+        this.task.listId=this.list._id //brought in from boardvue and adjusted
+        this.task.authorId=this.$store.state.user._id //brought in from boardvue
+        this.task={title: "", description: ""}
+        this.$store.dispatch('addTask', this.task)
   },
 
   logout() {
