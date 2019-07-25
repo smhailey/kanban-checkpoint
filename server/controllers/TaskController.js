@@ -12,10 +12,10 @@ export default class TasksController {
       // .get('', this.getAll)
       .get('', this.getAllTasksByList)
       .get('/:id', this.getById)
-      .use(Authorize.authenticated)
       .post('', this.create)
-      // .put('/:id', this.edit)
       .delete('/:id', this.delete)
+      .use(Authorize.authenticated)
+      // .put('/:id', this.edit)
       .use(this.defaultRoute)
   }
   defaultRoute(req, res, next) {
@@ -45,17 +45,17 @@ export default class TasksController {
       return res.status(201).send(data)
     } catch (error) { next(error) }
   }
-  async edit(req, res, next) {
-    try {
-      let data = await TaskService.findOneAndUpdate({
-        _id: req.params.id, authorId: req.session.uid
-      }, req.body, { new: true })
-      if (data) {
-        return res.send(data)
-      }
-      throw new Error('Invalid ID')
-    } catch (error) { next(error) }
-  }
+  // async edit(req, res, next) {
+  //   try {
+  //     let data = await TaskService.findOneAndUpdate({
+  //       _id: req.params.id, authorId: req.session.uid
+  //     }, req.body, { new: true })
+  //     if (data) {
+  //       return res.send(data)
+  //     }
+  //     throw new Error('Invalid ID')
+  //   } catch (error) { next(error) }
+  // }
   async delete(req, res, next) {
     try {
       await TaskService.findOneAndRemove({
