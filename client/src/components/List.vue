@@ -25,15 +25,22 @@
     data() {
       return {
         task: {
-          boardId: this.listProp.boardId,
-          listId: this.listProp._id
+          title: "",
+          description: "",
         }
       }
     },
     methods: {
       addTask() {
-        this.$store.dispatch('addTask', this.task)
-      },
+        this.newTask.listId=this.list._id //brought in from boardvue and adjusted
+        this.newTask.authorId=this.$store.state.user._id //brought in from boardvue
+        this.newTask={title: "", description: ""}
+        this.$store.dispatch('addTask', this.newTask)
+  },
+
+  logout() {
+    this.$store.dispatch("logout") //should let logout button work on list page
+  },
 
       deleteList(list) {
         this.$store.dispatch('deleteList', this.listProp);
