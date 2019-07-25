@@ -16,9 +16,10 @@
 </template>
 
 <script>
+// import Task from '../components/Task.vue'
 
   export default {
-    name: 'Lists',
+    name: 'List',
     props: ['listProp'],
     mounted() {
     
@@ -26,14 +27,14 @@
     data() {
       return {
         task: {
-          title: "",
-          description: "",
+          title: "", //FIXME
+          description: "", //FIXME 
         }
       }
     },
     methods: {
       addTask() {
-        this.task.listId=this.list._id //brought in from boardvue and adjusted
+        this.task.listId=this.listProp._id 
         this.task.authorId=this.$store.state.user._id //brought in from boardvue
         this.task={title: "", description: ""}
         this.$store.dispatch('addTask', this.task)

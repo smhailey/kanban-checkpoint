@@ -24,6 +24,8 @@
     </template>
 
 <script>
+
+  
   export default {
     name: "boards",
     mounted() {

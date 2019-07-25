@@ -3,13 +3,14 @@
 </template>
 
 <script>
+
   // import Comments from './Comment'
   export default {
     name: 'Tasks',
       props: ['taskProp'],
       mounted() {
-        this.$store.dispatch('....', this.task._id)
-      }, //TODO getComments will go in the string.
+        this.$store.dispatch('getComments', this.task._id)
+      }, //TODO getComments will go in the string I think
       data() {
         return {
           comment:{
