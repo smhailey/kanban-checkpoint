@@ -12,9 +12,10 @@
     name: 'List',
     props: ['listProp'],
     methods: {
-      deleteList(list) {
-        this.$store.dispatch('deleteList', list);
-      },
+      // FIXME Need to get this deleteList to work and remove deleteList from Board.vue
+      // deleteList(list) { 
+      //   this.$store.dispatch('deleteList', list);
+      // },
     },
 
   }
