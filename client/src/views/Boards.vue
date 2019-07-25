@@ -16,7 +16,7 @@
 <div class="row justify-content-center">
   <div class="card col-3 p-2 m-3" v-for="board in boards" :key="board._id">
     <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-    <button class="btn btn-danger btn-sm mb-2" @click="deleteBoard(board._id)">Delete </button>
+    <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteBoard(board._id)">Delete </button>
   </div>
 </div>
         

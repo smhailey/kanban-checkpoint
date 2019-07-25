@@ -19,7 +19,7 @@
         <h4>Title: {{list.title}}</h4>
         <p>Description: {{list.description}}</p>
         
-        <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
+        <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
       </div>
     </div>
 </div>
