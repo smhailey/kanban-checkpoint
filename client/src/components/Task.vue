@@ -4,7 +4,13 @@
 
 <script>
   export default {
-    name: 'Task'
+    name: 'Task',
+      props: ['taskProp'],
+          methods: {
+            deleteTask(task) {
+              this.$store.dispatch('deleteTask', this.taskProp);
+            },
+          },
   }
 </script>
 

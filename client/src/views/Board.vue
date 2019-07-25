@@ -36,6 +36,17 @@
       this.$store.dispatch("getBoards")
       this.$store.dispatch("getListsByBoard", this.boardId)
     },
+    methods: {
+      addList() {
+        this.newList.boardId = this.board._id
+        this.newList.authorId = this.$store.state.user._id
+        this.$store.dispatch("addList", this.newList);
+        this.newList = { title: "", description: "" };
+      },
+      logout() {
+        this.$store.dispatch("logout")
+      }
+    },
     computed: {
       board() {
         return (
@@ -46,17 +57,6 @@
       },
       lists() {
         return this.$store.state.lists
-      }
-    },
-    methods: {
-      addList() {
-        this.newList.boardId = this.board._id
-        this.newList.authorId = this.$store.state.user._id
-        this.$store.dispatch("addList", this.newList);
-        this.newList = { title: "", description: "" };
-      },
-      logout() {
-        this.$store.dispatch("logout")
       }
     },
     components: {

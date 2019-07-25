@@ -124,5 +124,28 @@ export default new Vuex.Store({
     },
 
     //#endregion
+
+    //#region -- TASKS --
+    getTasksByList({ commit, dispatch }, listId) {
+      api.get('tasks/' + listId + '/tasks')
+        .then(res => {
+          commit('setTasks', res.data)
+        })
+    },
+    addTask({ commit, dispatch }, payload) {
+      api.post('tasks', payload)
+        .then(res => {
+          dispatch('getTasksByList', payload.listId)
+        })
+    },
+    deleteTask({ commit, dispatch }, payload) {
+      api.delete('tasks/' + payload._id)
+        .then(res => {
+          dispatch('getTasksByList', payload.listId)
+          router.push({ name: 'board' })
+        })
+    },
+    //#endregion
+
   }
 })
