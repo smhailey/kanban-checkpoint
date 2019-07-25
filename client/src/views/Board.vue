@@ -1,7 +1,4 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Boards</router-link> |
-  </div> -->
   <div class="board">
     <button class="btn btn-sm btn-outline-danger m-2" @click="logout">Logout</button>
     <br>
@@ -14,17 +11,10 @@
 
     <!--//SECTION List within a board: cards -->
 
-    <!--// FIXME Need to move display info below to List.vue and replace it with a components link!-->
-
     <div class="row justify-content-center">
-      <div class="card col-3 p-2 m-3" v-for="list in lists" :key="list._id">
-
-        <h4>Title: {{list.title}}</h4>
-        <p>Description: {{list.description}}</p>
-        
-        <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
-      </div>
+      <List :listProp="list" v-for="list in lists" :key="list._id"></List>
     </div>
+  </div>
   </div>
 </template>
 
@@ -55,9 +45,7 @@
         );
       },
       lists() {
-        return (
-          this.$store.state.lists
-        )
+        return this.$store.state.lists
       }
     },
     methods: {
@@ -66,10 +54,6 @@
         this.newList.authorId = this.$store.state.user._id
         this.$store.dispatch("addList", this.newList);
         this.newList = { title: "", description: "" };
-      },
-      // FIXME Need to remove this deleteList and get deleteList in List.vue to work!
-      deleteList(list) {
-        this.$store.dispatch('deleteList', list);
       },
       logout() {
         this.$store.dispatch("logout")

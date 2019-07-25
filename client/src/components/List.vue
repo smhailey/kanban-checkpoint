@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card col-3 p-2 m-3">
     <h3>Title: {{listProp.title}}</h3>
     <p>Description: {{listProp.description}}</p>
     <button class="btn btn-danger btn-sm mb-2" @click="deleteList(listProp)">Delete </button>
@@ -12,10 +12,9 @@
     name: 'List',
     props: ['listProp'],
     methods: {
-      // FIXME Need to get this deleteList to work and remove deleteList from Board.vue
-      // deleteList(list) { 
-      //   this.$store.dispatch('deleteList', list);
-      // },
+      deleteList(list) {
+        this.$store.dispatch('deleteList', this.listProp);
+      },
     },
 
   }
