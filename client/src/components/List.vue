@@ -3,18 +3,15 @@
     <h3>Title: {{listProp.title}}</h3>
     <p>Description: {{listProp.description}}</p>
 
-    <div>
-    <form class="addTaskForm" @submit.prevent="addTask" id="addTaskForm">
-      <input v-model="task.title" type="text" class="form-control formBox" id="task-title" placeholder="New Task">
-      <button type="submit" class="btn">
-        <i class="fas fa-plus-circle"></i>
-      </button>
+    <form @submit.prevent="addTask">
+      <input type="text" placeholder="Add Task" v-model="task.title" class="form-control">
+      <input type="text" placeholder="Add description" v-model="task.description" class="form-control">
+      <button type="submit" class="btn btn-info btn-sm">Add Task</button>
     </form>
+
+    <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)"><i
+        class="fa fa-trash"></i></button>
   </div>
-    <!-- TODO Add Task form will go here?We want it to be on the same List card above or next to Delete button-->
-    
-    <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)"><i class="fa fa-trash"></i></button>
-</div>
 </template>
 
 <script>
@@ -23,7 +20,7 @@
     name: 'Lists',
     props: ['listProp'],
     mounted() {
-      this.$store.dispatch('getListsByBoard', this.listProp._id)
+      // this.$store.dispatch('getListsByBoard', this.listProp._id)
     },
     data() {
       return {
@@ -34,7 +31,7 @@
       }
     },
     methods: {
-      addTask(task) {
+      addTask() {
         this.$store.dispatch('addTask', this.task)
       },
 
@@ -46,9 +43,9 @@
     computed: {
       //TODO need help with this section
     },
-components: {
-  //REVIEW Should I add Task or Tasks? Either of them broke the code. Probably because we don't have info in the Task.vue yet.
-}
+    components: {
+      //REVIEW Should I add Task or Tasks? Either of them broke the code. Probably because we don't have info in the Task.vue yet.
+    }
   }
 </script>
 
