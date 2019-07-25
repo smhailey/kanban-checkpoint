@@ -27,9 +27,10 @@ export default new Vuex.Store({
     activeBoard: {},
     lists: [],
     tasks: {}
+    //comments
   },
   mutations: {
-    resetState(state, data) {
+    resetState(state, data) { 
       state.user = {}
     },
     setUser(state, user) {
@@ -146,6 +147,8 @@ export default new Vuex.Store({
         })
     },
     //#endregion
+
+//TODO COMMENTS TO BE ADDED
 
   }
 })

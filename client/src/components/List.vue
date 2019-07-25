@@ -3,12 +3,13 @@
     <h3>Title: {{listProp.title}}</h3>
     <p>Description: {{listProp.description}}</p>
 
+    <!--ADD TASK FORM/BUTTON WITHIN LIST CARD-->
     <form @submit.prevent="addTask">
       <input type="text" placeholder="Add Task" v-model="task.title" class="form-control">
       <input type="text" placeholder="Add description" v-model="task.description" class="form-control">
       <button type="submit" class="btn btn-info btn-sm">Add Task</button>
     </form>
-
+<!--DELETE BUTTON WITHIN LIST CARD-->
     <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)"><i
         class="fa fa-trash"></i></button>
   </div>
@@ -20,7 +21,7 @@
     name: 'Lists',
     props: ['listProp'],
     mounted() {
-      // this.$store.dispatch('getListsByBoard', this.listProp._id)
+    
     },
     data() {
       return {
