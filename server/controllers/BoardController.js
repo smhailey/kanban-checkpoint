@@ -3,23 +3,18 @@ import { Authorize } from '../middleware/authorize.js'
 import _listRepo from '../services/ListService.js'
 import _boardService from '../services/BoardService'
 
-// import service and create an instance
-// let _boardService = new BoardService()
-// let _listRepo = new ListService()
-// let _repo = _boardService.repository
-
 
 //PUBLIC
 export default class BoardsController {
   constructor() {
     this.router = express.Router()
+    .get('/:id/lists', this.getListByBoardId)
+    .get('', this.getAll)
+    .get('/:id', this.getById)
+    .post('', this.create)
+    .delete('/:id', this.delete)
       .use(Authorize.authenticated)
-      .get('', this.getAll)
-      .get('/:id', this.getById)
-      .get('/:id/lists', this.getListByBoardId)
-      .post('', this.create)
-      .put('/:id', this.edit)
-      .delete('/:id', this.delete)
+      // .put('/:id', this.edit)
       .use(this.defaultRoute)
   }
 
@@ -63,15 +58,15 @@ export default class BoardsController {
     } catch (error) { next(error) }
   }
 
-  async edit(req, res, next) {
-    try {
-      let data = await _boardService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, req.body, { new: true })
-      if (data) {
-        return res.send(data)
-      }
-      throw new Error("invalid id")
-    } catch (error) { next(error) }
-  }
+  // async edit(req, res, next) {
+  //   try {
+  //     let data = await _boardService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, req.body, { new: true })
+  //     if (data) {
+  //       return res.send(data)
+  //     }
+  //     throw new Error("invalid id")
+  //   } catch (error) { next(error) }
+  // }
 
   async delete(req, res, next) {
     try {
