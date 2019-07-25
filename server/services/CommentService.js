@@ -3,7 +3,7 @@ let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
 
 
-//REVIEW Do we need another Schema here? The Comment Schema is already written in the Task Service. When moved here, it wasn't happy. Without it, the export below isn't happy either.
+//Moved comment schema (placeholder text) back from Task Service to new Comment Service here
 
 let _schema = new Schema({
   title: { type: String, required: true },
