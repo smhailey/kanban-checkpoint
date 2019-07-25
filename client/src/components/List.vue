@@ -2,7 +2,7 @@
   <div class="card col-3 p-2 m-3">
     <h3>Title: {{listProp.title}}</h3>
     <p>Description: {{listProp.description}}</p>
-    <button class="btn btn-danger btn-sm mb-2" @click="deleteList(listProp)">Delete </button>
+    <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)">Delete </button>
   </div>
 </template>
 
