@@ -1,12 +1,13 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Boards</router-link> |
-      <!-- FIXME Learn how to move router-link to board.vue page -->
-      <!--TODO Add "Logout" link on other side of pipe instead of red outline button-->
+
+    <div id="app">
+      <div id="nav">
+        <router-link to="/">Boards</router-link> |
+        <!-- FIXME Learn how to move router-link to board.vue page -->
+        <!--TODO Add "Logout" link on other side of pipe instead of red outline button-->
+      </div>
+      <router-view /> <!--REVIEW What does this do?-->
     </div>
-    <router-view /> <!--REVIEW What does this do?-->
-  </div>
 </template>
 
 <script>
@@ -17,6 +18,7 @@
 </script>
 
 <style>
+
   #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

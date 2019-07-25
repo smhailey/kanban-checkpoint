@@ -14,7 +14,7 @@
 
     <!--//SECTION List within a board: cards -->
 
-    // FIXME Need to move display info below to List.vue and replace it with a components link!
+    <!--// FIXME Need to move display info below to List.vue and replace it with a components link!-->
 
     <div class="row justify-content-center">
       <div class="card col-3 p-2 m-3" v-for="list in lists" :key="list._id">
