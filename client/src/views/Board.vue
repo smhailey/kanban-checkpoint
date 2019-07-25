@@ -15,14 +15,14 @@
     <!--//SECTION List within a board: cards -->
     <div class="row justify-content-center">
       <div class="card col-3 p-2 m-3" v-for="list in lists" :key="list._id">
-        
+
         <h4>Title: {{list.title}}</h4>
         <p>Description: {{list.description}}</p>
-        
-        <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list._id)">Delete </button>
+
+        <button class="btn btn-danger btn-sm mb-2" @click="deleteList(list)">Delete </button>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -64,7 +64,9 @@
         this.$store.dispatch("addList", this.newList);
         this.newList = { title: "", description: "" };
       },
-
+      deleteList(list) {
+        this.$store.dispatch('deleteList', list);
+      },
       logout() {
         this.$store.dispatch("logout")
       }
