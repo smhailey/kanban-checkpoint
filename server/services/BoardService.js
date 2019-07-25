@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import ListService from './ListService'
+// import ListService from './ListService'
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
 

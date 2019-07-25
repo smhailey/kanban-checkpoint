@@ -3,15 +3,9 @@
     <h3>Title: {{listProp.title}}</h3>
     <p>Description: {{listProp.description}}</p>
 
-
-  <!-- <form class="addTaskForm" @submit.prevent="addTask" id="addTaskForm">
-    <input v-model="task.title" type="text" class="form-control formBox" id="task-title" placeholder="New Task">
-    <button type="submit" class="btn">
-      <i class="fas fa-plus-circle"></i>
-    </button>
-  </form> -->
+    <!-- TODO Add Task form will go here?We want it to be on the same List card above or next to Delete button-->
   
-  <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)">Delete </button>
+  <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)"><i class="fa fa-trash"></i></button>
 </div>
 </template>
 
@@ -33,7 +27,7 @@
     },
     methods: {
       addTask(task) {
-        this.$store.dispatch('addTask', this.task).then(task.target.reset(task - title))
+        this.$store.dispatch('addTask', this.task)
       },
 
       deleteList(list) {
@@ -45,7 +39,7 @@
       //TODO need help with this section
     },
 components: {
-  //REVIEW Should I add Task or Tasks? Either of them broke the code.
+  //REVIEW Should I add Task or Tasks? Either of them broke the code. Probably because we don't have info in the Task.vue yet.
 }
   }
 </script>
