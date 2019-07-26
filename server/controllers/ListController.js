@@ -40,7 +40,7 @@ export default class ListController {
 
   async getTaskByListId(req, res, next) {
     try {
-      let data = await _listRepo.find({  //REVIEW Change _repo to _listService?
+      let data = await _listRepo.find({
         listId: req.params.id
       })
       return res.send(data)

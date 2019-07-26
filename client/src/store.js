@@ -30,7 +30,7 @@ export default new Vuex.Store({
     //comments
   },
   mutations: {
-    resetState(state, data) { 
+    resetState(state, data) {
       state.user = {}
     },
     setUser(state, user) {
@@ -43,8 +43,7 @@ export default new Vuex.Store({
       state.lists = lists
     },
     setTasks(state, data) {
-
-      console.log(state.tasks)
+      Vue.set(state.tasks, data.listId, data || {})
     }
   },
   actions: {
@@ -127,16 +126,16 @@ export default new Vuex.Store({
     //#endregion
 
     //#region -- TASKS --
-    getTasksByList({ commit, dispatch }, listId) {
-      api.get('tasks/' + listId + '/tasks')
+    getTasksByList({ commit, dispatch }, payload) {
+      api.get('lists/' + payload.listId + '/tasks')
         .then(res => {
-          commit('setTasks', res.data)
+          commit('setTasks', payload)
         })
     },
     addTask({ commit, dispatch }, payload) {
       api.post('tasks', payload)
         .then(res => {
-          dispatch('getTasksByList', payload.listId)
+          dispatch('getTasksByList', payload)
         })
     },
     deleteTask({ commit, dispatch }, payload) {
@@ -148,7 +147,7 @@ export default new Vuex.Store({
     },
     //#endregion
 
-//TODO COMMENTS TO BE ADDED
+    //TODO COMMENTS TO BE ADDED
 
   }
 })
