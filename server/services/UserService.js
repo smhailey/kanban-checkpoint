@@ -6,7 +6,6 @@ let ObjectId = Schema.Types.ObjectId
 //bcrypt uses hashing and salt to obfiscate your password 
 const SALT = 10
 
-
 let _schema = new Schema({
   name: { type: String, required: true },
   //every email must be unique on the database
@@ -32,6 +31,3 @@ _schema.statics.generateHash = function (password) {
 }
 
 export default mongoose.model('User', _schema)
-
-
-

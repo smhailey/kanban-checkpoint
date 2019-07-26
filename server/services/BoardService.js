@@ -1,9 +1,6 @@
 import mongoose from "mongoose"
-// import ListService from './ListService'
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
-
-// let _listRepo = new ListService().repository
 
 let _schema = new Schema({
   title: { type: String, required: true },

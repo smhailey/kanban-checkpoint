@@ -27,7 +27,6 @@ export default new Vuex.Store({
     activeBoard: {},
     lists: [],
     tasks: {}
-    //comments
   },
   mutations: {
     resetState(state, data) {
@@ -78,7 +77,6 @@ export default new Vuex.Store({
     },
     //#endregion
 
-
     //#region -- BOARDS --
     getBoards({ commit, dispatch }) {
       api.get('boards')
@@ -88,7 +86,7 @@ export default new Vuex.Store({
     },
     addBoard({ commit, dispatch }, boardData) {
       api.post('boards', boardData)
-        .then(serverBoard => {
+        .then(res => {
           dispatch('getBoards')
         })
     },
@@ -100,7 +98,6 @@ export default new Vuex.Store({
         })
     },
     //#endregion
-
 
     //#region -- LISTS --
     getListsByBoard({ commit, dispatch }, boardId) {
@@ -122,7 +119,6 @@ export default new Vuex.Store({
           router.push({ name: 'board' })
         })
     },
-
     //#endregion
 
     //#region -- TASKS --
@@ -151,7 +147,8 @@ export default new Vuex.Store({
     },
     //#endregion
 
-    //TODO COMMENTS TO BE ADDED
+    //#region -- COMMENTS --
 
+    //#endregion
   }
 })

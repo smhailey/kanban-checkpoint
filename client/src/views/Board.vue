@@ -2,15 +2,12 @@
   <div class="board">
     <button class="btn btn-sm btn-outline-danger m-2" @click="logout">Logout</button>
     <br>
-    <h1>{{board.title}}</h1>
+    <h1>Board Title: {{board.title}}</h1>
     <form @submit.prevent="addList">
-      <input type="text" placeholder="title" v-model="newList.title" required>
-      <input type="text" placeholder="description" v-model="newList.description">
+      <input type="text" placeholder="List Title" v-model="newList.title" required>
+      <input type="text" placeholder="List Description" v-model="newList.description">
       <button type="submit">Create List</button>
     </form>
-
-    <!--//SECTION List within a board: cards -->
-
     <div class="row justify-content-center">
       <List :listProp="list" v-for="list in lists" :key="list._id"></List>
     </div>
