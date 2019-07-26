@@ -6,6 +6,8 @@
     <div>
       <h5>Task Description: {{taskProp.description}}</h5>
     </div>
+    <button class="btn btn-warning btn-sm mb-2" @click="deleteTask()">Delete Task</button>
+
   </div>
 </template>
 
@@ -24,9 +26,10 @@
       addComment(comment) {
         this.$store.dispatch('addComment', this.comment)
       },
-      deleteTask(task) {
+      deleteTask() {
         this.$store.dispatch('deleteTask', this.taskProp);
       },
+
     },
     computed: {},
     components: {}

@@ -3,13 +3,15 @@
     <h4>List Title: {{listProp.title}}</h4>
     <h4>List Description: {{listProp.description}}</h4>
     <Task :taskProp="task" v-for="task in tasks" :key="task._id"></Task>
-    <form @submit.prevent="addTask">
-      <input type="text" placeholder="Add Task" v-model="task.title" class="form-control">
-      <input type="text" placeholder="Add description" v-model="task.description" class="form-control">
+
+    <form @submit.prevent="addTask" class="m-2">
+      <input type="text" placeholder="Task Title" v-model="task.title" class="form-control">
+      <input type="text" placeholder="Task Description" v-model="task.description" class="form-control">
       <button type="submit" class="btn btn-info btn-sm">Add Task</button>
     </form>
-    <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)"><i
-        class="fa fa-trash"></i></button>
+    <!-- <button class="mt-auto btn btn-danger btn-sm mb-2" @click="deleteList(listProp)"><i
+        class="fa fa-trash"></i></button> -->
+    <button class="btn btn-danger btn-sm mb-2" @click="deleteList()">Delete List</button>
   </div>
 </template>
 
@@ -39,9 +41,11 @@
         this.$store.dispatch("logout")
       },
 
-      deleteList(list) {
+      deleteList() {
         this.$store.dispatch('deleteList', this.listProp);
       },
+
+
     },
 
     computed: {

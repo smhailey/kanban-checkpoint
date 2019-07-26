@@ -141,7 +141,8 @@ export default new Vuex.Store({
     deleteTask({ commit, dispatch }, payload) {
       api.delete('tasks/' + payload._id)
         .then(res => {
-          dispatch('getTasksByList', payload.listId)
+          debugger
+          dispatch('getTasksByList', payload)
           router.push({ name: 'board' })
         })
     },
