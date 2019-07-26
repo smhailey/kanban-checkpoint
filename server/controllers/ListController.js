@@ -1,6 +1,5 @@
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
-import _listRepo from '../services/ListService.js'
 import _listService from '../services/ListService'
 import _taskService from '../services/TaskService'
 
@@ -40,7 +39,7 @@ export default class ListController {
 
   async getTaskByListId(req, res, next) {
     try {
-      let data = await _listRepo.find({
+      let data = await _taskService.find({
         listId: req.params.id
       })
       return res.send(data)

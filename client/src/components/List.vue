@@ -22,7 +22,7 @@
     name: 'List',
     props: ['listProp'],
     mounted() {
-
+      this.$store.dispatch("getTasksByList", this.listProp)
     },
     data() {
       return {
@@ -32,7 +32,7 @@
     methods: {
       addTask() {
         this.task.listId = this.listProp._id
-        this.task.authorId = this.$store.state.user._id //brought in from boardvue
+        this.task.authorId = this.$store.state.user._id //brought in from store
         this.$store.dispatch('addTask', this.task)
         this.task = { title: "", description: "" }
       },

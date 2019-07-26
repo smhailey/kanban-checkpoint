@@ -1,8 +1,13 @@
 <template>
   <div>
-
-    <div>{{taskProp.title}}</div>
-    <div>{{taskProp.description}}</div>
+    <div>
+      <h2>
+        {{taskProp.title}}
+      </h2>
+    </div>
+    <div>
+      <h2>{{taskProp.description}}</h2>
+    </div>
 
   </div>
   <!-- TODO Delete Task button and Add Comment form will go here -->

@@ -43,7 +43,7 @@ export default new Vuex.Store({
       state.lists = lists
     },
     setTasks(state, data) {
-      Vue.set(state.tasks, data.listId, data || {})
+      Vue.set(state.tasks, data.listId, data.tasks)
     }
   },
   actions: {
@@ -127,9 +127,13 @@ export default new Vuex.Store({
 
     //#region -- TASKS --
     getTasksByList({ commit, dispatch }, payload) {
-      api.get('lists/' + payload.listId + '/tasks')
+      api.get('lists/' + (payload._id || payload.listId) + '/tasks')
         .then(res => {
-          commit('setTasks', payload)
+          let newPayload = {
+            listId: payload.listId || payload._id,
+            tasks: res.data
+          }
+          commit('setTasks', newPayload)
         })
     },
     addTask({ commit, dispatch }, payload) {
