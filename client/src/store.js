@@ -141,7 +141,6 @@ export default new Vuex.Store({
     deleteTask({ commit, dispatch }, payload) {
       api.delete('tasks/' + payload._id)
         .then(res => {
-          debugger
           dispatch('getTasksByList', payload)
           router.push({ name: 'board' })
         })
@@ -150,6 +149,24 @@ export default new Vuex.Store({
 
     //#region -- COMMENTS --
 
+    getCommentsByTask({ commit, dispatch }, payload) {
+      api.get('tasks/' + (payload._id || payload.taskId) + '/comments')
+        .then(res => {
+          let newPayload = {
+            taskId: payload.taskId || payload._id,
+            comments: res.data
+          }
+          commit('setComments', newPayload)
+        })
+    },
+
+    deleteComment({ commit, dispatch }, payload) {
+      api.delete('comments/' + payload._id)
+        .then(res => {
+          dispatch('getCommentsByTask', payload)
+          router.push({ name: 'board' })
+        })
+    },
     //#endregion
   }
 })

@@ -37,6 +37,7 @@
         this.task = { title: "", description: "" }
       },
 
+      //FIXME Do I even need a logout method here?
       logout() {
         this.$store.dispatch("logout")
       },
@@ -44,8 +45,6 @@
       deleteList() {
         this.$store.dispatch('deleteList', this.listProp);
       },
-
-
     },
 
     computed: {

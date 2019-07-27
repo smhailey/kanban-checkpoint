@@ -1,38 +1,55 @@
 <template>
   <div>
-    <div>
-      <h5>Task Title: {{taskProp.title}}</h5>
-    </div>
-    <div>
-      <h5>Task Description: {{taskProp.description}}</h5>
-    </div>
+    <h5>Task Title: {{taskProp.title}}</h5>
+    <h5>Task Description: {{taskProp.description}}</h5>
+    <Comment :commentProp="comment" v-for="comment in comments" :key="comment._id"></Comment>
+
+
+    <form @submit.prevent="addComment" class="m-2">
+      <input type="text" placeholder="Comment" v-model="comment.title" class="form-control">
+      <button type="submit" class="btn btn-info btn-sm">Add Comment</button>
+    </form>
+
     <button class="btn btn-warning btn-sm mb-2" @click="deleteTask()">Delete Task</button>
 
   </div>
 </template>
 
 <script>
+  import Comment from '../components/Comment.vue'
 
-  // import Comments from './Comment'
   export default {
     name: 'Task',
     props: ['taskProp'],
     mounted() {
+      this.$store.dispatch("getCommentsByTask", this.TaskProp)
     },
     data() {
-      return {}
+      return {
+        comment: {}
+      }
     },
     methods: {
-      addComment(comment) {
+      addComment() {
+        this.comment.taskId = this.taskProp._id
+        this.comment.authorId = this.$store.state.user._id
         this.$store.dispatch('addComment', this.comment)
+        this.comment = { title: "" }
       },
+
       deleteTask() {
         this.$store.dispatch('deleteTask', this.taskProp);
       },
 
     },
-    computed: {},
-    components: {}
+    computed: {
+      comments() {
+        return this.$store.state.comments[this.taskProp._id]
+      }
+    },
+    components: {
+      Comment
+    }
   }
 </script>
 
