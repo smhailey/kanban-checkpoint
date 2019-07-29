@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-3 p-2 m-3">
+  <div class="card col-5 m-3">
     <h4>List Title: {{listProp.title}}</h4>
     <h4>List Description: {{listProp.description}}</h4>
     <Task :taskProp="task" v-for="task in tasks" :key="task._id"></Task>
