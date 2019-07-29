@@ -26,7 +26,8 @@ export default new Vuex.Store({
     boards: [],
     activeBoard: {},
     lists: [],
-    tasks: {}
+    tasks: {},
+    comments: {}  //REVIEW I added this Monday and not I do not get a "TypeError: Cannot read property '5d3c88f512be44170875b949' of undefined" found in src/components/Task.vue
   },
   mutations: {
     resetState(state, data) {

@@ -22,7 +22,7 @@
     name: 'Task',
     props: ['taskProp'],
     mounted() {
-      this.$store.dispatch("getCommentsByTask", this.TaskProp)
+      this.$store.dispatch("getCommentsByTask", this.taskProp)
     },
     data() {
       return {
