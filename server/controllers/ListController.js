@@ -31,16 +31,16 @@ export default class ListController {
 
   async getById(req, res, next) {
     try {
-      let data = await _listService.findOne({ _id: req.params.id, authorId: req.session.uid })
+      let data = await _listService.findOne
+        ({ _id: req.params.id, authorId: req.session.uid })
       return res.send(data)
     } catch (error) { next(error) }
   }
 
   async getTasksByListId(req, res, next) {
     try {
-      let data = await _taskService.find({
-        listId: req.params.id
-      })
+      let data = await _taskService.find
+        ({ listId: req.params.id })
       return res.send(data)
     } catch (error) { next(error) }
   }
@@ -56,9 +56,7 @@ export default class ListController {
   async deleteList(req, res, next) {
     try {
       await _listService.findOneAndRemove
-        ({
-          _id: req.params.id, authorId: req.session.uid
-        })
+        ({ _id: req.params.id, authorId: req.session.uid })
       return res.send("Deleted sucessfully")
     } catch (error) { next(error) }
   }

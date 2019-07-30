@@ -134,26 +134,26 @@ export default new Vuex.Store({
             tasks: res.data
           }
           commit('setTasks', newPayload)
+          router.push({ name: 'board' })
         })
     },
     addTask({ commit, dispatch }, payload) {
       api.post('tasks', payload)
         .then(res => {
-          dispatch('getTasksByList', payload)
+          dispatch('getTasksByListId', payload)
         })
     },
     deleteTask({ commit, dispatch }, payload) {
       api.delete('tasks/' + payload._id)
         .then(res => {
-          dispatch('getTasksByList', payload)
-          router.push({ name: 'board' })
+          dispatch('getTasksByListId', payload)
         })
     },
     //#endregion
 
     //#region -- COMMENTS --
 
-    getCommentsByTask({ commit, dispatch }, payload) {
+    getCommentsByTaskId({ commit, dispatch }, payload) {
       api.get('tasks/' + (payload._id || payload.taskId) + '/comments')
         .then(res => {
           let newPayload = {
@@ -161,19 +161,19 @@ export default new Vuex.Store({
             comments: res.data
           }
           commit('setComments', newPayload)
+          router.push({ name: 'board' })
         })
     },
     addComment({ commit, dispatch }, payload) {
       api.post('comments', payload)
         .then(res => {
-          dispatch('getCommentsByList', payload)
+          dispatch('getCommentsByTaskId', payload)
         })
     },
     deleteComment({ commit, dispatch }, payload) {
       api.delete('comments/' + payload._id)
         .then(res => {
-          dispatch('getCommentsByTask', payload)
-          router.push({ name: 'board' })
+          dispatch('getCommentsByTaskId', payload)
         })
     },
     //#endregion
