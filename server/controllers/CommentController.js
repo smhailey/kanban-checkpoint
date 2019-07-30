@@ -7,6 +7,7 @@ export default class CommentsController {
   constructor() {
     this.router = express.Router()
       .get('/:id', this.getById)
+      .get('/:id/comments', this.getCommentByTaskId)
       .post('', this.create)
       .delete('/:id', this.delete)
       .use(Authorize.authenticated)
@@ -19,6 +20,14 @@ export default class CommentsController {
     try {
       let data = await _commentService.findOne({
         _id: req.params.id, authorId: req.session.id
+      })
+      return res.send(data)
+    } catch (error) { next(error) }
+  }
+  async getCommentByTaskId(req, res, next) {
+    try {
+      let data = await _commentService.find({
+        taskId: req.params.id
       })
       return res.send(data)
     } catch (error) { next(error) }

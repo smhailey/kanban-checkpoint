@@ -55,6 +55,7 @@ export default class ListController {
 
   async delete(req, res, next) {
     try {
+
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }

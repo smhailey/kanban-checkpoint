@@ -163,6 +163,12 @@ export default new Vuex.Store({
           commit('setComments', newPayload)
         })
     },
+    addComment({ commit, dispatch }, payload) {
+      api.post('comments', payload)
+        .then(res => {
+          dispatch('getCommentsByList', payload)
+        })
+    },
     deleteComment({ commit, dispatch }, payload) {
       api.delete('comments/' + payload._id)
         .then(res => {
