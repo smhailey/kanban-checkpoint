@@ -19,17 +19,15 @@ export default class TasksController {
   }
   async getById(req, res, next) {
     try {
-      let data = await _taskService.findOne({
-        _id: req.params.id, authorId: req.session.id
-      })
+      let data = await _taskService.findOne
+        ({ _id: req.params.id, authorId: req.session.id })
       return res.send(data)
     } catch (error) { next(error) }
   }
   async getCommentsByTaskId(req, res, next) {
     try {
-      let data = await _commentService.find({
-        taskId: req.params.id
-      })
+      let data = await _commentService.find
+        ({ taskId: req.params.id })
       return res.send(data)
     } catch (error) { next(error) }
   }
@@ -42,9 +40,8 @@ export default class TasksController {
   }
   async delete(req, res, next) {
     try {
-      await _taskService.findOneAndRemove({
-        _id: req.params.id, authorId: req.session.uid
-      })
+      await _taskService.findOneAndRemove
+        ({ _id: req.params.id, authorId: req.session.uid })
       return res.send('Deleted sucessfully')
     } catch (error) { next(error) }
   }

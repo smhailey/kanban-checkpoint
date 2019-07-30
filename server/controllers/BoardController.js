@@ -22,9 +22,8 @@ export default class BoardsController {
 
   async getListByBoardId(req, res, next) {
     try {
-      let data = await _listRepo.find({
-        boardId: req.params.id
-      })
+      let data = await _listRepo.find
+        ({ boardId: req.params.id })
       return res.send(data)
     } catch (error) {
       console.error(error)
@@ -35,7 +34,8 @@ export default class BoardsController {
   async getAll(req, res, next) {
     try {
       //only gets boards by user who is logged in
-      let data = await _boardService.find({ authorId: req.session.uid })
+      let data = await _boardService.find
+        ({ authorId: req.session.uid })
       return res.send(data)
     }
     catch (err) { next(err) }
@@ -43,7 +43,8 @@ export default class BoardsController {
 
   async getById(req, res, next) {
     try {
-      let data = await _boardService.findOne({ _id: req.params.id, authorId: req.session.uid })
+      let data = await _boardService.findOne
+        ({ _id: req.params.id, authorId: req.session.uid })
       return res.send(data)
     } catch (error) { next(error) }
   }
@@ -59,7 +60,8 @@ export default class BoardsController {
   async delete(req, res, next) {
     try {
       console.log('Entered delete board')
-      await _boardService.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
+      await _boardService.findOneAndRemove
+        ({ _id: req.params.id, authorId: req.session.uid })
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }

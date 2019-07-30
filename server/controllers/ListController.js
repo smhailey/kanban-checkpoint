@@ -12,7 +12,7 @@ export default class ListController {
       .get('/:id', this.getById)
       .get('/:id/tasks', this.getTasksByListId)
       .post('', this.create)
-      .delete('/:id', this.delete)
+      .delete('/:id', this.deleteList)
       .use(this.defaultRoute)
   }
 
@@ -53,10 +53,13 @@ export default class ListController {
     } catch (error) { next(error) }
   }
 
-  async delete(req, res, next) {
+  async deleteList(req, res, next) {
     try {
-
-      return res.send("Successfully deleted")
+      await _listService.findOneAndRemove
+        ({
+          _id: req.params.id, authorId: req.session.uid
+        })
+      return res.send("Deleted sucessfully")
     } catch (error) { next(error) }
   }
 }

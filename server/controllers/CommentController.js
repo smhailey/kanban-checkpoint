@@ -17,9 +17,8 @@ export default class CommentsController {
   }
   async getById(req, res, next) {
     try {
-      let data = await _commentService.findOne({
-        _id: req.params.id, authorId: req.session.id
-      })
+      let data = await _commentService.findOne
+        ({ _id: req.params.id, authorId: req.session.id })
       return res.send(data)
     } catch (error) { next(error) }
   }
@@ -32,9 +31,8 @@ export default class CommentsController {
   }
   async delete(req, res, next) {
     try {
-      await _commentService.findOneAndRemove({
-        _id: req.params.id, authorId: req.session.uid
-      })
+      await _commentService.findOneAndRemove
+        ({ _id: req.params.id, authorId: req.session.uid })
       return res.send('Deleted sucessfully')
     } catch (error) { next(error) }
   }
