@@ -3,28 +3,22 @@
     <h5>Task Title: {{taskProp.title}}</h5>
     <h5>Task Description: {{taskProp.description}}</h5>
 
+
+
+    <!-- drop down on task.vue
+    drop to show available lists
+    on click update task with new list id
+    get all tasksById again -->
     <form>
       Select list to move task to:
       <select id="taskChanger">
-        <option value=:taskProp.title>{{taskProp.title}}</option>
-        <option value=:taskProp.title>{{taskProp.title}}</option>
-        <option value=:taskProp.title>{{taskProp.title}}</option>
+        <option value=:listProp.title v-for="list in lists">{{listProp.title}}</option>
       </select>
     </form>
     <button type="button" onclick="changeTask()">Move task</button>
 
 
-
     <Comment :commentProp="comment" v-for="comment in comments" :key="comment._id"></Comment>
-
-
-    <!-- drop down on task.vue
-drop to show available lists
-on click update task with new list id
-get all tasksById again -->
-
-
-
     <form @submit.prevent="addComment" class="m-2">
       <input type="text" placeholder="Comment" v-model="comment.title" class="form-control">
       <button type="submit" class="btn btn-info btn-sm">Add Comment</button>
