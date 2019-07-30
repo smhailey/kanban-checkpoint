@@ -126,7 +126,7 @@ export default new Vuex.Store({
     //#endregion
 
     //#region -- TASKS --
-    getTasksByList({ commit, dispatch }, payload) {
+    getTasksByListId({ commit, dispatch }, payload) {
       api.get('lists/' + (payload._id || payload.listId) + '/tasks')
         .then(res => {
           let newPayload = {

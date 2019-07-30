@@ -10,7 +10,7 @@ export default class ListController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/tasks', this.getTaskByListId)
+      .get('/:id/tasks', this.getTasksByListId)
       .post('', this.create)
       .delete('/:id', this.delete)
       .use(this.defaultRoute)
@@ -36,7 +36,7 @@ export default class ListController {
     } catch (error) { next(error) }
   }
 
-  async getTaskByListId(req, res, next) {
+  async getTasksByListId(req, res, next) {
     try {
       let data = await _taskService.find({
         listId: req.params.id

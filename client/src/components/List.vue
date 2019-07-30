@@ -22,7 +22,7 @@
     name: 'List',
     props: ['listProp'],
     mounted() {
-      this.$store.dispatch("getTasksByList", this.listProp)
+      this.$store.dispatch("getTasksByListId", this.listProp)
     },
     data() {
       return {
