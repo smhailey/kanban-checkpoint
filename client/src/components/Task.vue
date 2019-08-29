@@ -61,7 +61,7 @@
     computed: {
       comments() {
         return this.$store.state.comments[this.taskProp._id]
-      }
+      },
       lists() {
         return this.$store.state.lists[this.taskProp._id]
       }
